@@ -12,24 +12,18 @@
           <th scope="col">#</th>
           <th scope="col">First</th>
           <th scope="col">Last</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
+      {% for patient in patients %}
         <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
+          <th scope="row">{{ patient.id }}</th>
+          <td>{{ patient["name"][0].given[0] }}</td>
+          <td>{{ patient["name"][0].family }}</td>
+          <td><img src="{{ url_for('static', filename='images/right-arrow.png') }}" width="30" height="30" class="d-inline-block align-top" alt=""></td>
         </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Larry</td>
-          <td>the Bird</td>
-        </tr>
+      {% endfor %}
       </tbody>
     </table>
  </main>

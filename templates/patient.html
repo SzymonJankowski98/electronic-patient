@@ -7,21 +7,21 @@
 {% block body %}
  <main class="container mt-2">
      <p>id: {{ patient.id }}</p>
-     <p>imię i nazwisko: {{patient["name"][0].given[0] }} {{ patient["name"][0].family }}</p>
-     <p>płeć: {{ patient.gender }}</p>
-     <p>data urodzenia: {{ patient.birthDate }}</p>
+     <p>name: {{patient["name"][0].given[0] }} {{ patient["name"][0].family }}</p>
+     <p>gender: {{ patient.gender }}</p>
+     <p>birth: {{ patient.birthDate }}</p>
         <form>
-        <label>rok: </label>
+        <label>year: </label>
         <input type="number" id="date" value="{{ year }}" name="year">
-        <button type="submit" class="btn btn-primary">szukaj</button>
+        <button type="submit" class="btn btn-primary">search</button>
         </form>
      <table class="table  mt-4">
       <thead class="thead-dark">
         <tr>
-          <th scope="col">obserwacja</th>
-          <th scope="col">data</th>
-          <th scope="col">wartość</th>
-          <th scope="col">jednostka</th>
+          <th scope="col">observation</th>
+          <th scope="col">date</th>
+          <th scope="col">value</th>
+          <th scope="col">unit</th>
           <th></th>
         </tr>
       </thead>
@@ -42,8 +42,8 @@
      <table class="table mt-2">
       <thead class="thead-dark">
         <tr>
-          <th scope="col">zalecenie</th>
-          <th scope="col">data</th>
+          <th scope="col">medication request</th>
+          <th scope="col">date</th>
         </tr>
       </thead>
       <tbody>

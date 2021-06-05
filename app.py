@@ -10,9 +10,12 @@ app = Flask(__name__)
 HAPI_BASE_URL = 'http://localhost:8080/baseR4'
 
 
-def get_patients():
+def get_patients(name):
     client = SyncFHIRClient(HAPI_BASE_URL)
-    resources = client.resources('Patient').search().limit(50)
+    if name:
+        resources = client.resources('Patient').search(name=name).limit(50)
+    else:
+        resources = client.resources('Patient').search().limit(50)
     patients = resources.fetch()
     return patients
 
@@ -37,7 +40,10 @@ def get_observations(patient_id, observation):
 
 @app.route('/')
 def index():
-    patients = get_patients()
+    name = False
+    if 'name' in request.args:
+        name = request.args.get('name')
+    patients = get_patients(name)
     return render_template('index.html', patients=patients)
 
 

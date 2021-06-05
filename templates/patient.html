@@ -10,13 +10,11 @@
      <p>imię i nazwisko: {{patient["name"][0].given[0] }} {{ patient["name"][0].family }}</p>
      <p>płeć: {{ patient.gender }}</p>
      <p>data urodzenia: {{ patient.birthDate }}</p>
-    <p>
         <form>
         <label>rok: </label>
         <input type="number" id="date" value="{{ year }}" name="year">
         <button type="submit" class="btn btn-primary">szukaj</button>
         </form>
-    </p>
      <table class="table  mt-4">
       <thead class="thead-dark">
         <tr>
@@ -24,6 +22,7 @@
           <th scope="col">data</th>
           <th scope="col">wartość</th>
           <th scope="col">jednostka</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -34,6 +33,7 @@
             <td>{{ observation.issued }}</td>
             <td>{{ observation.valueQuantity.value }}</td>
             <td>{{ observation.valueQuantity.unit }}</td>
+            <td><a href="{{url_for('observation_details', patient_id = patient.id, observation = observation.code.coding[0].code)}}" ><img src="{{ url_for('static', filename='images/right-arrow.png') }}" width="30" height="30" class="d-inline-block align-top" alt=""></a></td>
             </tr>
           {% endif %}
       {% endfor %}

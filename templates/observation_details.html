@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Electronic Patient</title>
+{% endblock %}
+
+{% block body %}
+<main class="container">
+    <h3 class="mt-2">{{ name }}</h3>
+    <div id="chart" class="chart"></div>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script type="text/javascript">
+      var graphs = {{graphJSON | safe}};
+      Plotly.plot('chart',graphs,{});
+    </script>
+</main>
+{% endblock %}

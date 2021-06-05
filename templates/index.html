@@ -21,7 +21,7 @@
           <th scope="row">{{ patient.id }}</th>
           <td>{{ patient["name"][0].given[0] }}</td>
           <td>{{ patient["name"][0].family }}</td>
-          <td><img src="{{ url_for('static', filename='images/right-arrow.png') }}" width="30" height="30" class="d-inline-block align-top" alt=""></td>
+            <td><a href="{{url_for('patient', patient_id = patient.id)}}" ><img src="{{ url_for('static', filename='images/right-arrow.png') }}" width="30" height="30" class="d-inline-block align-top" alt=""></a></td>
         </tr>
       {% endfor %}
       </tbody>
